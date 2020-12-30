@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root to: "rooms#index"
   resources :users, only: [:edit, :update]
   # ユーザー編集に必要なルーティングはeditとupdateだけ
-  resources :rooms, only: [:new, :create]
+  resources :rooms, only: [:new, :create] do
+    resources :messages, only: [:index, :create]
+  end
 end
